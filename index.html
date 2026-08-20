@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function() {
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+          if (typeof msg === 'string' && (msg.indexOf('Script error') !== -1 || !url)) {
+            return true;
+          }
+          return false;
+        };
+        window.addEventListener('error', function(e) {
+          if (e.message && (e.message.indexOf('Script error') !== -1 || !e.filename)) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return true;
+          }
+        }, true);
+        window.addEventListener('unhandledrejection', function(e) {
+          if (e.reason && (e.reason.name === 'NotAllowedError' || e.reason.name === 'AbortError' || e.reason.name === 'SecurityError')) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+          }
+        });
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'Amour est Hera — Character Archive</title>
+    <meta name="description" content="A vintage romantic archive for fictional characters, worlds, and lore." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Italianno&family=Montserrat:wght@400;500;600;700&family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#FFF8F3] text-[#4D4449] selection:bg-[#FBE3EC] selection:text-[#4D4449] overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
